@@ -1,15 +1,73 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Vault</title>
+        <meta charset="UTF-8"/>
+                <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="menu.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
     </head>
     <body>
-        <div>TODO write content</div>
+        <header>
+            <nav>
+                <div class="logo">
+                    <span class="logo-text">THE</span>
+                    <span class="logo-text">VAULT</span>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar" />
+                    <button type="submit"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fas fa-map-marker-alt"></i> Costa Rica</button>
+                    <div class="dropdown-content">
+                        <a href="#">Estados Unidos </a>
+                        <a href="#">Mexico</a>
+                        <a href="#">Argentina</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn"><i class="fas fa-flag"></i> ES</button>
+                    <div class="dropdown-content">
+                        <a href="#">Español</a>
+                        <a href="#">Inglés</a>
+                        <a href="#">Francés</a>
+                    </div>
+                </div>
+                <button class="signup-login-btn"><a href="login.html" class="no-underline"><i class="fas fa-user"></i> Signup/Login</a></button>
+
+                <div class="cart"><i class="fas fa-shopping-cart"></i> Carrito</div>
+            </nav>
+        </header>
+        <section class="black-section">
+            <div class="column">
+                <p>Conozcanos</p>
+                <p>Politica de The Vault</p>
+                <p>Sobre Nosotros</p>
+            </div>
+            <div class="column">
+                <p>Contactanos</p>
+                <p>Instragram</p>
+                <p>Facebook</p>
+                <p>Twitter</p>
+            </div>
+            <div class="column">
+                <p>Ayuda General</p>
+                <p>Devoluciones</p>
+                <p>Terminos & Servicios</p>
+            </div>
+            <div class="column">
+                <p>Haz dinero con nosotros</p>
+                <p>Vender Productos</p>
+                <p>Publicitar Productos</p>
+            </div>
+            <div style="clear: both;"></div>
+        </section>
+
+
+        <footer th:fragment="footer" class="footer" class="gray-section">
+            <p>&COPY Derechos Reservados 2023</p>
+        </footer>
     </body>
 </html>

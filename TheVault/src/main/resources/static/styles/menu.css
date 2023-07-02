@@ -74,6 +74,16 @@ nav {
   padding: 5px 10px;
   cursor: pointer;
 }
+.no-underline {
+  text-decoration: none;
+  color: inherit;
+}
+
+.no-underline:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .cart::before {
   font-family: "Font Awesome 5 Free";
