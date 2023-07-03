@@ -1,0 +1,100 @@
+header {
+  background: #333;
+  padding: 10px;
+  color: #fff;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  display: flex;
+}
+
+.logo-text:nth-child(1) {
+  color: #e5e9ec;
+}
+
+.logo-text:nth-child(2) {
+  color: #f2d027;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.search-bar input {
+  height: 30px;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.signup-login-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.cart::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f07a";
+  margin-right: 5px;
+}
+
+.search-bar button::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f00e";
+  margin-right: 5px;
+}
+
+.dropdown-content::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f041";
+  margin-right: 5px;
+}
+
+.dropdown-content a[href="#es"]::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f1e9";
+  margin-right: 5px;
+}
