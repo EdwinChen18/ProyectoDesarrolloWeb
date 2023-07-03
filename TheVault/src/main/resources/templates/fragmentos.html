@@ -1,33 +1,37 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://wwww.thymeleaf.org" 
-      xmlns:sec="http://thymeleaft.org/extras/spring-security">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>THE VAULT</title>
-    </head>
-    <body>
-        <header th:replace="~{layout/plantilla :: header}"/>
-          <!-- Sección 2: Slideshow introductorio -->
-  <section>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <title>The Vault</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="menu.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" />
+  <script src="../static.js/slideshow.js"></script>
+</head>
+<body>
+  <!-- Sección 2: Slideshow introductorio -->
+  <section th:fragment="section1">
     <h2>Welcome to THE VAULT!</h2>
     <div class="slideshow-container">
 
   <!-- Full-width images with number and caption text -->
   <div class="mySlides fade">
     <div class="numbertext">1 / 3</div>
-    <img src="../static/images/cartas.jpg" alt="" style="width:100%"/>
+    <img src="perry.jpg" style="width:100%">
     <div class="text">Caption Text</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">2 / 3</div>
-    <img src="../static/images/cartas.jpg" alt="" style="width:100%"/>
+    <img src="cartas.jpg" style="width:100%">
     <div class="text">Caption Two</div>
   </div>
 
   <div class="mySlides fade">
     <div class="numbertext">3 / 3</div>
-    <img src="../static/images/cartas.jpg" alt="" style="width:100%"/>
+    <img src="img3.jpg" style="width:100%">
     <div class="text">Caption Three</div>
   </div>
 
@@ -35,7 +39,7 @@
   <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
-<br/>
+<br>
 
 <!-- The dots/circles -->
 <div style="text-align:center">
@@ -46,7 +50,7 @@
   </section>
 
   <!-- Sección 3: Descripción de la tienda -->
-<section class="about-us">
+<section th:fragment="section2">
   <div>
     <h2>Sobre "THE VAULT"</h2>
     <p>THE VAULT es una tiedan, en donde vas a poder encontrar todo tipo de coleccionables, como cartas pokemon, Funko Pops, figuras de star wars y muchos más!. 
@@ -56,7 +60,7 @@
 </section>
 
 
-<section>
+<section th:fragment="section3">
   <h2>Featured & Recommended</h2>
   <div class="slideshow-container">
     <!-- Sección 1 -->
@@ -122,7 +126,7 @@
 </section>
 
 
-<section>
+<section th:fragment="section4">
   <h2>Featured Products</h2>
   <div class="product">
     <img src="producto1.jpg" alt="Producto 1">
@@ -138,6 +142,7 @@
   </div>
   <button class="browse-more">Browse More</button>
 </section>
-        <footer th:replace="~{layout/plantilla :: footer}"/>
-    </body>
+
+
+</body>
 </html>
