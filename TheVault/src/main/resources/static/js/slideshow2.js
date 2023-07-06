@@ -1,42 +1,34 @@
-let slideIndex = 1;
-showSlides(slideIndex);
+  var splide = new Splide("#main-slider", {
+        width: 600,
+        height: 300,
+        pagination: false,
+        cover: true
+      });
 
-function plusSlides(n) {
-    showSlides(slideIndex += n);
-}
+      var thumbnails = document.getElementsByClassName("thumbnail");
+      var current;
 
-function currentSlide(n) {
-    showSlides(slideIndex = n);
-}
+      for (var i = 0; i < thumbnails.length; i++) {
+        initThumbnail(thumbnails[i], i);
+      }
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {
-        slideIndex = 1;
-    }
-    if (n < 1) {
-        slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
+      function initThumbnail(thumbnail, index) {
+        thumbnail.addEventListener("click", function () {
+          splide.go(index);
+        });
+      }
 
-    // Reiniciar el slider después de mostrar la última diapositiva
-    if (slideIndex === slides.length) {
-        setTimeout(function () {
-            slideIndex = 0;
-            showSlides(slideIndex + 1);
-        }, 2000); // Espera 2 segundos antes de reiniciar
-    } else {
-        setTimeout(function () {
-            showSlides(slideIndex + 1);
-        }, 2000); // Cambia la imagen cada 2 segundos
-    }
-}
+      splide.on("mounted move", function () {
+        var thumbnail = thumbnails[splide.index];
+
+        if (thumbnail) {
+          if (current) {
+            current.classList.remove("is-active");
+          }
+
+          thumbnail.classList.add("is-active");
+          current = thumbnail;
+        }
+      });
+
+      splide.mount();
