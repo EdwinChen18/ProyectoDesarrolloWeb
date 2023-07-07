@@ -48,63 +48,88 @@ footer {
 }
 
 
-/* Estilos para la clase .product */
+.product-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
 .product {
-    border: 3px solid #ccc;
-    border-radius: 4px;
-    padding: 5px;
-    margin-bottom: 20px;
+  flex-basis: 30%;
+  margin: 10px;
+  text-align: center;
 }
 
 .product-image {
-    width: 30%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  height: auto;
 }
 
-/* Estilos para el botón .see-more */
+.product-details {
+  display: flex;
+  justify-content: center;
+}
+
 .see-more {
-    background-color: #333;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    text-decoration: none;
+  display: block;
+  margin-top: 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-/* Estilos para el botón .browse-more */
+.see-more:hover {
+  color: #2979FF;
+  text-decoration: underline;
+}
+
 .browse-more {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none;
+  display: block;
+  width: 300px;
+  height: 100px;
+  background-color: #0087CC;
+  color: #fff;
+  border: none;
+  border-radius: 27px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 32px;
+  cursor: pointer;
+  margin: 20px auto;
 }
-
 .about-us {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
 }
 
 .about-us div {
-    text-align: center;
-    max-width: 400px;
-    padding: 20px;
-    border: 1px solid #ccc;
+  text-align: center;
+  max-width: 800px; /* Ajusta el ancho máximo para evitar que invada otras secciones */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #FBFEE7;
 }
 
 .about-us h2 {
-    font-size: 24px;
-    text-align: left;
-    font-family: Arial, sans-serif; /* Cambia la fuente del título */
+  font-size: 24px;
+  text-align: left;
+  font-family: Arial, sans-serif;
 }
 
 .about-us p {
-    font-size: 16px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Cambia la fuente del párrafo */
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: justify; /* Alinea el texto justificado para que se estire horizontalmente */
 }
 /* The Modal (background) */
 .modal {
@@ -314,7 +339,13 @@ form {
     }
 }
 
-
+      bodySlide2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
    .splide {
         margin: 0 auto;
       }
