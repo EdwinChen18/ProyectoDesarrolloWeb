@@ -1,6 +1,6 @@
 header {
   background: #333;
-  padding: 10px;
+  padding: 30px;
   color: #fff;
 }
 
@@ -17,10 +17,12 @@ nav {
 
 .logo-text:nth-child(1) {
   color: #e5e9ec;
+  font-size: 35px
 }
 
 .logo-text:nth-child(2) {
   color: #f2d027;
+  font-size: 35px
 }
 
 .search-bar {
@@ -28,7 +30,7 @@ nav {
 }
 
 .search-bar input {
-  height: 30px;
+  height: 35px;
 }
 
 .search-bar button {
@@ -74,6 +76,16 @@ nav {
   padding: 5px 10px;
   cursor: pointer;
 }
+.no-underline {
+  text-decoration: none;
+  color: inherit;
+}
+
+.no-underline:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
 
 .cart::before {
   font-family: "Font Awesome 5 Free";
