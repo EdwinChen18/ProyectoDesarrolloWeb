@@ -50,7 +50,7 @@
                                     </ul>
                     </div>
                 </div>
-                <button class="signup-login-btn"><a href="login.html" class="no-underline"><i class="fas fa-user"></i> Signup/Login</a></button>
+                <button class="signup-login-btn"><a th:href="@{/login}" class="no-underline"><i class="fas fa-user"></i> Signup/Login</a></button>
 
                 <div class="cart"><i class="fas fa-shopping-cart"></i>Carrito</div>
             </nav>
@@ -141,6 +141,7 @@
                 <div class="splide__track">
                     <ul class="splide__list">
                         <li class="splide__slide">
+                            <img src="../../static/images/azul.jpg" alt=""/>
                             <img src="images/rojo.jpg" alt="" />
                         </li>
                         <li class="splide__slide">
@@ -223,7 +224,7 @@
             <div style="clear: both;"></div>
         </section>
 
-        <footer th:fragment="footer" class="bg-info text-white mt-5 p-2, gray-section">
+        <footer th:fragment="footer" class=" gray-section">
             <p>&COPY Derechos Reservados 2023</p>
         </footer>
     </body>
