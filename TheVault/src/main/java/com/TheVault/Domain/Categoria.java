@@ -13,36 +13,30 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="figura")
+@Table(name="categoria")
 public class Categoria implements Serializable {
     
     private static final long serialVersionUID = 1L;
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idfigura")
-    private Long idfigura;
-    private String nombre_figura;
-    private String tipo_figura;
-    private String ruta_imagen;
-    private int material_figura;
-    private int cantidad;
+    @Column(name="id_categoria")
+    private Long id_categoria;
+    private String descripcion;
+    private String rutaImagen;
     boolean agotado;
 
 
     public Categoria() {
     }
 
-    public Categoria(Long idfigura, String nombre_figura, String tipo_figura, String ruta_imagen, int material_figura, int cantidad) {
-        this.idfigura = idfigura;
-        this.nombre_figura = nombre_figura;
-        this.tipo_figura = tipo_figura;
-        this.ruta_imagen = ruta_imagen;
-        this.material_figura = material_figura;
-        this.cantidad = cantidad;
+    public Categoria(Long id_categoria, String descripcion, String rutaImagen, boolean agotado) {
+        this.id_categoria = id_categoria;
+        this.descripcion = descripcion;
+        this.rutaImagen = rutaImagen;
+        this.agotado = agotado;
     }
 
-    
     
     
 }

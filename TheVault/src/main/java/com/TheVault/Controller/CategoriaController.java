@@ -1,6 +1,8 @@
 package com.TheVault.Controller;
+
 import com.TheVault.Domain.Categoria;
 import com.TheVault.Service.CategoriaService;
+import com.TheVault.Service.impl.FirebaseStorageServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,39 +35,30 @@ public class CategoriaController {
     }
     
     @Autowired
-//    private FirebaseStorageServiceImpl firebaseStorageService;
-//    
-//    @PostMapping("/guardar")
-//    public String categoriaGuardar(Categoria categoria, @RequestParam("imagenFile")
-//    MultipartFile imagenFile){
-//        if(!imagenFile.isEmpty()){
-//            categoriaService.save(categoria);
-//            categoria.setRutaImagen(firebaseStorageService.cargaImagen(
-//                    imagenFile, 
-//                    "categoria", categoria.getIdArbol()));
-//        }
-//        categoriaService.save(categoria);
-//        return "redirect:/categoria/listado";
-//    }
+    private FirebaseStorageServiceImpl firebaseStorageService;
+    
     @PostMapping("/guardar")
-public String categoriaGuardar(Categoria categoria, @RequestParam("imagenFile") MultipartFile imagenFile) {
-    if (!imagenFile.isEmpty()) {
-        String rutaImagen = "/categoria/listado" + imagenFile.getOriginalFilename();
-        categoria.setRuta_imagen(rutaImagen);
+    public String categoriaGuardar(Categoria categoria, @RequestParam("imagenFile")
+    MultipartFile imagenFile){
+        if(!imagenFile.isEmpty()){
+            categoriaService.save(categoria);
+            categoria.setRutaImagen(firebaseStorageService.cargaImagen(
+                    imagenFile, 
+                    "categoria", categoria.getId_categoria()));
+        }
+        categoriaService.save(categoria);
+        return "redirect:/categoria/listado";
     }
 
-    categoriaService.save(categoria);
-    return "redirect:/categoria/listado";
-}
 
     
-    @GetMapping("/eliminar/{idarbol}")
+    @GetMapping("/eliminar/{idCategoria}")
     public String categoriaEliminar(Categoria categoria){
         categoriaService.delete(categoria);
         return "redirect:/categoria/listado";
     }
     
-    @GetMapping("/modificar/{idarbol}")
+    @GetMapping("/modificar/{idCategoria}")
     public String categoriaModificar(Categoria categoria, Model model) {
         categoria = categoriaService.getCategoria(categoria);
         model.addAttribute("categoria", categoria);

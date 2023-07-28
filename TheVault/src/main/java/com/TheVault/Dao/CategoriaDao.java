@@ -1,8 +1,3 @@
-/**
- *
- * @author ReyNaldo
- */
-
 package com.TheVault.Dao;
 
 import com.TheVault.Domain.Categoria;

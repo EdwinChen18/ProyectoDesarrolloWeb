@@ -6,7 +6,7 @@ package com.TheVault.Service;
     public interface CategoriaService {
 
        
-        public List<Categoria> getCategorias(boolean extinto);
+        public List<Categoria> getCategorias(boolean agotado);
 
         
         public Categoria getCategoria(Categoria categoria);

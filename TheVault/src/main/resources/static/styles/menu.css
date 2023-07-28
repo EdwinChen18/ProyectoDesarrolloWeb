@@ -15,12 +15,12 @@ nav {
   display: flex;
 }
 
-.logo-text:nth-child(1) {
+.logo-text1:nth-child(1) {
   color: #e5e9ec;
   font-size: 35px
 }
 
-.logo-text:nth-child(2) {
+.logo-text2:nth-child(2) {
   color: #f2d027;
   font-size: 35px
 }
