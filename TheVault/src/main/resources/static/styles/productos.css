@@ -1,0 +1,99 @@
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #F2E4BB;
+        font-family: Arial, sans-serif;
+    }
+.productCategoria {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px;
+    padding: 10px;
+    background-color: #F2E4BB;
+}
+
+.product-imageCategoria {
+    width: 30%; /* Ajusta el ancho de la imagen */
+    height: auto;
+    margin-right: 5px; /* Espacio entre la imagen y el texto */
+}
+
+.product-detailsCategoria {
+    flex: 1; /* Permite que el texto ocupe el espacio restante */
+    display: flex;
+    flex-direction: column; /* Coloca el precio debajo de la descripción */
+}
+
+.description-and-price {
+    margin-bottom: 20px; /* Espacio entre la descripción y el precio */
+}
+
+pCategoria {
+    font-size: 14px;
+    margin: 5px 0; /* Espacio entre los párrafos */
+}
+
+.buy-button-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea el botón a la derecha */
+    margin-top: 10px; /* Agrega margen superior al botón */
+}
+
+.btn-comprar {
+    background-color: #04AA6D;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+h3Categoria {
+    font-size: 24px; /* Cambia el tamaño de la letra del título */
+    margin-bottom: 5px;
+}
+.dropdown-container {
+    position: absolute;
+    top: 0; /* Posiciona el botón en la parte superior */
+    right: 0; /* Posiciona el botón en la parte derecha */
+    margin: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-dropdown {
+    background-color: #04AA6D;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%; /* Posiciona el menú debajo del botón */
+    right: 0; /* Ajusta el menú a la derecha */
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Muestra el menú desplegable al hacer hover sobre el botón */
+.dropdown-container:hover .dropdown-menu {
+    display: block;
+}
