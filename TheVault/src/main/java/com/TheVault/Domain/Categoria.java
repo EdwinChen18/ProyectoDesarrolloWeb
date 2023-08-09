@@ -1,13 +1,9 @@
 package com.TheVault.Domain;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 
 
@@ -24,17 +20,19 @@ public class Categoria implements Serializable {
     private Long id_categoria;
     private String descripcion;
     private String rutaImagen;
-    boolean agotado;
+    boolean activo;
 
-
+    @OneToMany
+    @JoinColumn(name="id_categoria")
+    List<Producto> productos;
+    
     public Categoria() {
     }
 
-    public Categoria(Long id_categoria, String descripcion, String rutaImagen, boolean agotado) {
+    public Categoria(Long id_categoria, String descripcion, boolean activo) {
         this.id_categoria = id_categoria;
         this.descripcion = descripcion;
-        this.rutaImagen = rutaImagen;
-        this.agotado = agotado;
+        this.activo = activo;
     }
 
     

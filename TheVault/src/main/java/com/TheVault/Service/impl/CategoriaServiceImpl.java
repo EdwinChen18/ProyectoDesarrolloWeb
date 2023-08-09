@@ -22,7 +22,7 @@ public class CategoriaServiceImpl implements CategoriaService {
     public List<Categoria> getCategorias(boolean agotado) {
         var lista = categoriaDao.findAll();
         if (agotado){
-           lista.removeIf(categoriaEletemento -> !categoriaEletemento.isAgotado());
+           lista.removeIf(categoriaEletemento -> !categoriaEletemento.isActivo());
         }
         return lista;
     }
