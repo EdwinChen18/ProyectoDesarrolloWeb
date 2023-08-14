@@ -52,7 +52,10 @@
                 </div>
             </form>   
         </div>
+                            <div th:if="${param.error != null}"> <!--verifica si existe un parámetro llamado "error" en la URL después de enviar un intento de inicio de sesión --> 
+                        <h3>[[#{error.login}]]</h3>
+                    </div>
         <section th:replace="~{layout/plantilla :: contactUs}"/> 
-        <footer th:replace="layout/plantilla :: footer"></footer>
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
     </body>
 </html>

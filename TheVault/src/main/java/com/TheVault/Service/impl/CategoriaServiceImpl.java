@@ -1,8 +1,5 @@
 package com.TheVault.Service.impl;
-/**
- *
- * @author ReyNaldo
- */
+
 import com.TheVault.Dao.CategoriaDao;
 import com.TheVault.Domain.Categoria;
 import com.TheVault.Service.CategoriaService;

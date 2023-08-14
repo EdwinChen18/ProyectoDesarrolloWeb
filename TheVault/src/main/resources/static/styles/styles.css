@@ -210,13 +210,6 @@
         margin: 0 auto;
         position: relative;
     }
-    .slideshow-containerFT {
-        max-width: 1000px;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-        position: relative;
-    }
 
     .slider-images {
         width: 40%;
@@ -231,7 +224,6 @@
         display: none;
     }
 
-    /* Next & previous buttons */
     .prev, .next {
         cursor: pointer;
         position: absolute;
@@ -297,7 +289,7 @@
     /* Fading animation */
     .fade {
         animation-name: fade;
-        animation-duration: 1.5s;
+        animation-duration: 5.5s;
     }
 
     @keyframes fade {
@@ -395,4 +387,8 @@ pCategoria {
 
 .btn-comprar:hover {
     background-color: #049361;
+}
+.section {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
 }

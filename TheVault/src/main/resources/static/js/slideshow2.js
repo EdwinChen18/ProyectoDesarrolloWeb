@@ -1,4 +1,4 @@
-  var splide = new Splide("#main-slider", {
+ var splide = new Splide("#main-slider", {
         width: 600,
         height: 300,
         pagination: false,

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head>
+        <title>The Vault</title>
+        <meta charset="UTF-8"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
+        <link rel="stylesheet" href="styles/login.css" type="text/css"/>
+        <link rel="stylesheet" href="styles/menu.css" type="text/css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/themes/splide-skyblue.min.css"/>
+        <script
+            type="text/javascript" src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js">
+
+        </script>
+    </head> 
+    <body>
+        <header th:replace='~{layout/plantilla :: header}'/>
+
+        <section th:fragment="botonesAgregar" class="product-containerCategoria">
+<div class="dropdown-container">
+    <button class="btn-dropdown">Filtrar</button>
+    <!-- elementos del menú desplegable -->
+    <div class="dropdown-menu">
+        <!--  menú desplegable -->
+        <form th:action="@{/producto/query}" method="POST">
+            <label for="precio">Precio:</label>
+            <select id="precio" name="precio">
+                <option value="asc">Menor a Mayor</option>
+                <option value="desc">Mayor a Menor</option>
+            </select>
+            <button type="submit">Filtrar</button>
+        </form>
+    </div>
+</div>
+            <div class="product-container-wrapper">
+                <div class="productCategoria">
+                    <img src="https://media.cnn.com/api/v1/images/stellar/prod/230726053047-01-lionel-messi-goals-inter-miami-spt-intl.jpg?c=16x9&q=h_720,w_1280,c_fill" alt="Producto 1" class="product-imageCategoria" />
+                    <div class="product-detailsCategoria">
+                        <h3Categoria>Título del Producto 1</h3Categoria>
+                        <pCategoria>Descripción del Producto 1.</pCategoria>
+                        <pCategoria>Precio: $50</pCategoria>
+                        <div class="buy-button-container">
+                            <button class="btn-comprar">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!--línea de separación -->
+                <hr class="separator"/>
+
+                <div class="productCategoria">
+                    <img src="https://media.cnn.com/api/v1/images/stellar/prod/230726053047-01-lionel-messi-goals-inter-miami-spt-intl.jpg?c=16x9&q=h_720,w_1280,c_fill" alt="Producto 1" class="product-imageCategoria" />
+                    <div class="product-detailsCategoria">
+                        <h3Categoria>Título del Producto 1</h3Categoria>
+                        <pCategoria>Descripción del Producto 1.</pCategoria>
+                        <pCategoria>Precio: $50</pCategoria>
+                        <div class="buy-button-container">
+                            <button class="btn-comprar">Comprar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Agregar más productos aquí -->
+            </div>
+        </section>
+    </body>
+</html>

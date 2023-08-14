@@ -22,7 +22,7 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @Configuration
-public class ProjectConfig implements WebMvcConfigurer{
+public class TheVaultConfig implements WebMvcConfigurer{
 
     /* Los siguientes métodos son para incorporar el tema de internacionalización en el proyecto */
 
@@ -73,7 +73,7 @@ public class ProjectConfig implements WebMvcConfigurer{
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/index", "/errores/**",
                         "/carrito/**", "/pruebas/**", "/reportes/**",
-                        "/registro/**", "/js/**", "/webjars/**")
+                        "/registro/**", "/webjars/**","/js/**","/styles/**","/images/**")
                 .permitAll()
                 .requestMatchers(
                         "/producto/nuevo", "/producto/guardar",
@@ -82,7 +82,8 @@ public class ProjectConfig implements WebMvcConfigurer{
                         "/categoria/modificar/**", "/categoria/eliminar/**",
                         "/usuario/nuevo", "/usuario/guardar",
                         "/usuario/modificar/**", "/usuario/eliminar/**",
-                        "/reportes/**"
+                        "/reportes/**", "/js/**"
+                        
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/producto/listado",
@@ -90,11 +91,28 @@ public class ProjectConfig implements WebMvcConfigurer{
                         "/usuario/listado"
                 ).hasAnyRole("ADMIN", "VENDEDOR")
                 .requestMatchers("/facturar/carrito")
+                        
                 .hasRole("USER")
                 )
                 .formLogin((form) -> form
                 .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());
         return http.build();
+    }
+    
+         @Autowired
+
+    private UserDetailsService userDetailsService;
+
+
+
+    @Autowired
+
+    public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
+
+        build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder()); //se utiliza el objeto AuthenticationManagerBuilder para configurar el servicio de detalles de usuario (userDetailsService) y el codificador de contraseñas (passwordEncoder)
+        //asegura que Spring Security utilice el UserDetailsService proporcionado 
+        //se establece un codificador de contraseñas BCryptPasswordEncoder para que las contraseñas se almacenen y comparen de forma segura.
+
     }
 }
