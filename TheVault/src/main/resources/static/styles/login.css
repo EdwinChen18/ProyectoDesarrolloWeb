@@ -1,24 +1,40 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #F2E4BB;
-    font-family: Arial, sans-serif;
-}
 
 * {
     box-sizing: border-box;
 }
 
 .bg-img {
-    background-image: url("../static/images/bglogin.jpg"); 
-    min-height: 700px;
-
+    background-image: url("../images/bglogin.jpg"); 
+    height: 100vh;
+ background-size: 70% auto; /* Ajusta el ancho de la imagen al 70% y mantiene la altura original */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.custom-login-container {
+    position: absolute; /* Saca el formulario del flujo normal */
+    top: 50%; /* Coloca el formulario en el centro vertical */
+    left: 80%; /* Coloca el formulario en el centro horizontal */
+    width: 40%; /* Ajusta el ancho del formulario */
+    margin-right: 7%;
+    padding: 16px;
+    background-color: white;
+    z-index: 1; /* Asegura que el formulario esté sobre la imagen de fondo */
+}
+.custom-login-container .social-buttons {
+    text-align: center; /* Centra los botones horizontalmente */
+    margin-top: 20px; /* Agrega un espacio arriba de los botones */
+}
+
+.custom-login-container .social-buttons .btnS {
+    width: 70%; /* Ajusta el ancho de los botones */
+    margin-bottom: 10px; /* Agrega espacio entre los botones */
+}
 .btnS {
     width: 100%;
     padding: 12px;
@@ -50,14 +66,18 @@ body {
 .container {
     position: absolute;
     right: 0;
-    width: 30%; 
+    width: 40%; 
     margin-right: 7%;
     padding: 16px;
     background-color: white;
      top: 20px;
 }
 
-input[type=text], input[type=password] {
+
+/* Estilos para los campos de entrada */
+.custom-login-container input[type=text],
+.custom-login-container input[type=password] {
+    /* Aplica los estilos solo a los input dentro del formulario */
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;
@@ -65,23 +85,13 @@ input[type=text], input[type=password] {
     background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+.custom-login-container input[type=text]:focus,
+.custom-login-container input[type=password]:focus {
     background-color: #ddd;
     outline: none;
 }
-
-.btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-}
-
-.btn:hover {
-    opacity: 1;
+.align-left-input {
+    text-align: left;
 }
 
 

@@ -1,5 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
-            // Your JavaScript code here
+
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -15,19 +14,23 @@ function showSlides(n) {
   var i;
   var slides = document.getElementsByClassName("mySlides");
   
+  if (slides.length === 0) {
+    return; // No slides found, exit the function
+  }
+  
   if (n > slides.length) {
     slideIndex = 1;
   }
   if (n < 1) {
     slideIndex = slides.length;
   }
+  
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none"; // Hide all slides
   }
+  
   slides[slideIndex - 1].style.display = "block"; // Display the current slide
 }
-  });
-
 
 
 
