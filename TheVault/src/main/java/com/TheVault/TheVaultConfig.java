@@ -65,6 +65,7 @@ public class TheVaultConfig implements WebMvcConfigurer{
         registry.addViewController("/index").setViewName("index");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
+        registry.addViewController("/producto/listado").setViewName("/producto/listado");
     }
 
     @Bean
@@ -98,9 +99,7 @@ public class TheVaultConfig implements WebMvcConfigurer{
                 .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());
         return http.build();
-    }
-
-    
+    } 
          @Autowired
 
     private UserDetailsService userDetailsService;
@@ -116,4 +115,6 @@ public class TheVaultConfig implements WebMvcConfigurer{
         //se establece un codificador de contraseñas BCryptPasswordEncoder para que las contraseñas se almacenen y comparen de forma segura.
 
     }
+    
+    
 }

@@ -7,46 +7,67 @@
         <meta charset="UTF-8"/>
         <!--        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>-->
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-<!--        <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
-        <link rel="stylesheet" href="styles/menu.css" type="text/css"/>
-        <link rel="stylesheet" href="styles/prpductos.css" type="text/css"/>-->
+        <link rel="stylesheet" href="/styles/styles.css" type="text/css"/>
+        <link rel="stylesheet" href="/styles/menu.css" type="text/css"/>
+        <link rel="stylesheet" href="styles/productos.css" type="text/css"/>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-        <link href="../../static/styles/menu.css" rel="stylesheet" type="text/css"/>
-        <link href="../../static/styles/productos.css" rel="stylesheet" type="text/css"/>
-            <link href="../../static/styles/styles.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace='~{layout/plantilla :: header}'/>
 
         <section th:fragment="botonesAgregar" class="product-containerCategoria">
-<div class="dropdown-container">
-    <button class="btn-dropdown">Filtrar</button>
-    <!-- elementos del menú desplegable -->
-    <div class="dropdown-menu">
-        <!--  menú desplegable -->
-        <form th:action="@{/producto/query}" method="POST">
-            <label for="precio">Precio:</label>
-            <select id="precio" name="precio">
-                <option value="asc">Menor a Mayor</option>
-                <option value="desc">Mayor a Menor</option>
-            </select>
-            <button type="submit">Filtrar</button>
-        </form>
-    </div>
-</div>
+           <div class="col-md-3">
+                    <form method="POST" th:action="@{/pruebas/query1}" 
+                          class="was-validated">
+                        <div class="card">                            
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label for="precioInf">[[#{pruebas.precio.inferior}]]</label>
+                                    <input type="number" class="form-control" 
+                                           th:value="${precioInf}"
+                                           th:name="precioInf" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="precioSup">[[#{pruebas.precio.superior}]]</label>
+                                    <input type="number" class="form-control" 
+                                           th:value="${precioSup}"
+                                           th:name="precioSup" required="true"/>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>   
             <div class="product-container-wrapper">
-                <div class="productCategoria">
+                <div class="productCategoria"  th:if="${productos != null and !productos.empty}">
+                     <div class="card" th:each="producto : ${productos}">
+                         <div class="card-body">
                     <img src="https://media.cnn.com/api/v1/images/stellar/prod/230726053047-01-lionel-messi-goals-inter-miami-spt-intl.jpg?c=16x9&q=h_720,w_1280,c_fill" alt="Producto 1" class="product-imageCategoria" />
                     <div class="product-detailsCategoria">
                         <h3Categoria>Título del Producto 1</h3Categoria>
                         <pCategoria>Descripción del Producto 1.</pCategoria>
                         <pCategoria>Precio: $50</pCategoria>
                         <div class="buy-button-container">
-                            <button class="btn-comprar">Comprar</button>
+                            <form>
+                                <button class="btn btn-ligth" id="addCard" 
+                                        name="addCard" onclick="agregarCarro(this.form)" 
+                                        type="submit"><i class="fas fa-cart-plus"></i> Agregar al carrito
+                                </button>
+                            </form>
+                                  <p class="card-text">[[${producto.detalle}]]</p>                            
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>
-
+                <div th:if="${productos == null or productos.empty}">
+                    [[#{carrito.no_mostrar}]]</div>
+           
+                
                 <!--línea de separación -->
                 <hr class="separator"/>
 

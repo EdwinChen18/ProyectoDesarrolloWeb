@@ -11,10 +11,10 @@
         <link rel="stylesheet" href="styles/menu.css" type="text/css"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" />
         <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/themes/splide-skyblue.min.css"/>
+              href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/themes/splide-skyblue.min.css"/>
         <script
             type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
+        src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"></script>
         <script src="js/slideshow.js" type="text/javascript"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
@@ -52,9 +52,30 @@
                 </div>
                 <button class="signup-login-btn"><a th:href="@{/login}" class="no-underline"><i class="fas fa-user"></i> Signup/Login</a></button>
 
-                <div class="cart"><i class="fas fa-shopping-cart"></i>Carrito</div>
+                <div class="cart"><a th:href="@{/carrito/listado}" class="no-underline"><i class="fas fa-shopping-cart"></i>Carrito</a></div>
             </nav>
         </header>
+
+        <section th:fragment="menuCategorias"> 
+
+            <div class="scrollmenu">
+                <a th:href="@{/producto/listado}">[[#{aplicacion.Pokemon}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.DragonBall}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.StarWars}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.Marvel}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.DCcomics}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.YuGiOh}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.AdventureTime}]]</a>  
+                <a th:href="@{/producto/listado}">[[#{aplicacion.RegularShow}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.HarryPotter}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.FunkoPops}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.MyHeroAcademia}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.Magic}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.SailorMoon}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.Naruto}]]</a>
+                <a th:href="@{/producto/listado}">[[#{aplicacion.Nintendo}]]</a>
+            </div>
+        </section>
 
         <!--         Sección 2: Slideshow introductorio -->
         <section th:fragment="slideIntro">
@@ -168,42 +189,42 @@
                     <img src="images/rojo.jpg" alt=""/>
                 </li>
             </ul>
-                <script>
-      var splide = new Splide("#main-slider", {
-        width: 600,
-        height: 300,
-        pagination: false,
-        cover: true
-      });
+            <script>
+                var splide = new Splide("#main-slider", {
+                    width: 600,
+                    height: 300,
+                    pagination: false,
+                    cover: true
+                });
 
-      var thumbnails = document.getElementsByClassName("thumbnail");
-      var current;
+                var thumbnails = document.getElementsByClassName("thumbnail");
+                var current;
 
-      for (var i = 0; i < thumbnails.length; i++) {
-        initThumbnail(thumbnails[i], i);
-      }
+                for (var i = 0; i < thumbnails.length; i++) {
+                    initThumbnail(thumbnails[i], i);
+                }
 
-      function initThumbnail(thumbnail, index) {
-        thumbnail.addEventListener("click", function () {
-          splide.go(index);
-        });
-      }
+                function initThumbnail(thumbnail, index) {
+                    thumbnail.addEventListener("click", function () {
+                        splide.go(index);
+                    });
+                }
 
-      splide.on("mounted move", function () {
-        var thumbnail = thumbnails[splide.index];
+                splide.on("mounted move", function () {
+                    var thumbnail = thumbnails[splide.index];
 
-        if (thumbnail) {
-          if (current) {
-            current.classList.remove("is-active");
-          }
+                    if (thumbnail) {
+                        if (current) {
+                            current.classList.remove("is-active");
+                        }
 
-          thumbnail.classList.add("is-active");
-          current = thumbnail;
-        }
-      });
+                        thumbnail.classList.add("is-active");
+                        current = thumbnail;
+                    }
+                });
 
-      splide.mount();
-    </script>
+                splide.mount();
+            </script>
         </section>
 
         <section th:fragment="popularCommunity">
@@ -218,7 +239,7 @@
                 <div class="product">
                     <img src="" alt="Producto 2" class="product-image" />
                     <div class="product-details">
-                        <button class="see-more">See More</button>
+                        <button class="see-more"><a class="no-underline" th:href="@{/producto/listado}">See More</a></button>
                     </div>
                 </div>
                 <div class="product">

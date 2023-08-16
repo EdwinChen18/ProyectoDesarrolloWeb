@@ -16,7 +16,7 @@ function readURL(input) {
  * En el carrito de compras utilizando un llamado "ajax" */
 function agregarCarro(formulario) {
     var valor = formulario.elements[0].value;
-    var url = '/carrito/agregar';
+    var url = '/producto/agregar';
     url = url + '/' + valor;
     $("#resultsBlock").load(url);
 }
