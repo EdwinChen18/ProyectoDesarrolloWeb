@@ -73,8 +73,9 @@ public class TheVaultConfig implements WebMvcConfigurer{
         http
                 .authorizeHttpRequests((request) -> request
                 .requestMatchers("/", "/index", "/errores/**",
-                        "/carrito/**", "/producto/**", "/reportes/**",
-                        "/registro/**", "/webjars/**","/js/**","/styles/**","/images/**")
+                        "/carrito/**", "/reportes/**",
+                        "/registro/**", "/webjars/**","/js/**","/styles/**","/images/**",
+                        "/producto/**","/categoria/**")
                 .permitAll()
                 .requestMatchers(
                         "/producto/nuevo", "/producto/guardar",

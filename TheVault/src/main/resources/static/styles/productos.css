@@ -28,10 +28,10 @@
     margin-bottom: 20px; /* Espacio entre la descripción y el precio */
 }
 
-pCategoria {
+/*pCategoria {
     font-size: 14px;
-    margin: 5px 0; /* Espacio entre los párrafos */
-}
+    margin: 5px 0;  Espacio entre los párrafos 
+}*/
 
 .buy-button-container {
     display: flex;
@@ -48,10 +48,10 @@ pCategoria {
     border-radius: 4px;
 }
 
-h3Categoria {
-    font-size: 24px; /* Cambia el tamaño de la letra del título */
+/*h3Categoria {
+    font-size: 24px;  Cambia el tamaño de la letra del título 
     margin-bottom: 5px;
-}
+}*/
 .dropdown-container {
     position: absolute;
     top: 0; /* Posiciona el botón en la parte superior */
