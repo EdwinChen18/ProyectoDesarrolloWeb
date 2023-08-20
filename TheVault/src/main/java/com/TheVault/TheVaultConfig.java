@@ -21,9 +21,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 @Configuration
 public class TheVaultConfig implements WebMvcConfigurer{
 
+    
     /* Los siguientes métodos son para incorporar el tema de internacionalización en el proyecto */
 
  /* localeResolver se utiliza para crear una sesión de cambio de idioma*/
@@ -75,7 +82,7 @@ public class TheVaultConfig implements WebMvcConfigurer{
                 .requestMatchers("/", "/index", "/errores/**",
                         "/carrito/**", "/reportes/**",
                         "/registro/**", "/webjars/**","/js/**","/styles/**","/images/**",
-                        "/producto/**","/categoria/**")
+                        "/producto/**","/categoria/**","/css/**")
                 .permitAll()
                 .requestMatchers(
                         "/producto/nuevo", "/producto/guardar",
@@ -117,5 +124,11 @@ public class TheVaultConfig implements WebMvcConfigurer{
 
     }
     
+        @Override
+    public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
+        configurer.mediaType("css", MediaType.valueOf("text/css"));
+         configurer.mediaType("js", MediaType.valueOf("application/javascript"));
+    }
     
+
 }

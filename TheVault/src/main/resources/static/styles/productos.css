@@ -14,7 +14,7 @@
 
 .product-imageCategoria {
     width: 30%; /* Ajusta el ancho de la imagen */
-    height: auto;
+    height: 30%;
     margin-right: 5px; /* Espacio entre la imagen y el texto */
 }
 

@@ -47,7 +47,7 @@ public class CategoriaController {
                     "categoria", categoria.getId_categoria()));
         }
         categoriaService.save(categoria);
-        return "redirect:/categoria/listado";
+        return "redirect:/";
     }
 
 

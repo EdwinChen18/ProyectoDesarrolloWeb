@@ -5,83 +5,375 @@
     <head>
         <title>The Vault</title>
         <meta charset="UTF-8"/>
-        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
-        <link rel="stylesheet" th:href="/styles/styles.css" type="text/css"/>
-        <link rel="stylesheet" th:href="/styles/menu.css" type="text/css"/>
-        <link rel="stylesheet" th:href="styles/productos.css" type="text/css"/>
-        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <!--        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+                <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+                <link rel="stylesheet" th:href="/styles/styles.css" type="text/css"/>
+                <link rel="stylesheet" th:href="/styles/menu.css" type="text/css"/>
+                <link rel="stylesheet" th:href="styles/productos.css" type="text/css"/>
+                <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+                <script src="../../static/js/rutinas.js" type="text/javascript"></script>-->
+        <script type="text/javascript">
+            function agregarCarro(formulario) {
+                var valor = formulario.elements[0].value;
+                var url = '/producto/agregar';
+                url = url + '/' + valor;
+                $("#resultsBlock").load(url);
+            }
+        </script>
     </head>
+
     <body>
         <header th:replace='~{layout/plantilla :: header}'/>
-
-        <section th:fragment="botonesAgregar" class="product-containerCategoria">
-           <div class="col-md-3">
-                    <form method="POST" th:action="@{/pruebas/query1}" 
-                          class="was-validated">
-                        <div class="card">                            
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label for="precioInf">[[#{pruebas.precio.inferior}]]</label>
-                                    <input type="number" class="form-control" 
-                                           th:value="${precioInf}"
-                                           th:name="precioInf" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="precioSup">[[#{pruebas.precio.superior}]]</label>
-                                    <input type="number" class="form-control" 
-                                           th:value="${precioSup}"
-                                           th:name="precioSup" required="true"/>
-                                </div>
+        <section th:fragment="listadoProductos" id="productos">
+            <div class="col-md-3">
+                <form method="POST" th:action="@{/pruebas/query1}" 
+                      class="was-validated">
+                    <div class="card">                            
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="precioInf">[[#{pruebas.precio.inferior}]]</label>
+                                <input type="number" class="form-control" 
+                                       th:value="${precioInf}"
+                                       th:name="precioInf" required="true"/>
                             </div>
-                            <div class="card-footer text-center">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
-                                </button>
+                            <div class="mb-3">
+                                <label for="precioSup">[[#{pruebas.precio.superior}]]</label>
+                                <input type="number" class="form-control" 
+                                       th:value="${precioSup}"
+                                       th:name="precioSup" required="true"/>
                             </div>
                         </div>
-                    </form>
-                </div>   
-            <div class="product-container-wrapper">
-                <div class="productCategoria"  th:if="${productos != null and !productos.empty}">
-                     <div class="card" th:each="producto : ${productos}">
-                         <div class="card-body">
-                    <img src="https://media.cnn.com/api/v1/images/stellar/prod/230726053047-01-lionel-messi-goals-inter-miami-spt-intl.jpg?c=16x9&q=h_720,w_1280,c_fill" alt="Producto 1" class="product-imageCategoria" />
-                    <div class="product-detailsCategoria">
-                        <h3Categoria>Título del Producto 1</h3Categoria>
-                        <pCategoria>Descripción del Producto 1.</pCategoria>
-                        <pCategoria>Precio: $150</pCategoria>
-                        <div class="buy-button-container">
-                            <form>
-                                <button class="btn btn-ligth" id="addCard" 
-                                        name="addCard" onclick="agregarCarro(this.form)" 
-                                        type="submit"><i class="fas fa-cart-plus"></i> Agregar al carrito
-                                </button>
-                            </form>
-                                  <p class="card-text">[[${producto.detalle}]]</p>                            
+                        <div class="card-footer text-center">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
+                            </button>
                         </div>
                     </div>
+                </form>
+            </div>   
+            <style>
+                body {
+                    margin: 0;
+                    padding: 0;
+                    background-color: #F2E4BB;
+                    font-family: Arial, sans-serif;
+                }
+                .productCategoria {
+                    display: flex;
+                    align-items: flex-start;
+                    margin: 10px;
+                    padding: 10px;
+                    background-color: #F2E4BB;
+                }
+
+                .product-imageCategoria {
+                    width: 30%; /* Ajusta el ancho de la imagen */
+                    height: 30%;
+                    margin-right: 5px; /* Espacio entre la imagen y el texto */
+                }
+
+                .product-detailsCategoria {
+                    flex: 1; /* Permite que el texto ocupe el espacio restante */
+                    display: flex;
+                    flex-direction: column; /* Coloca el precio debajo de la descripción */
+                }
+
+                .description-and-price {
+                    margin-bottom: 20px; /* Espacio entre la descripción y el precio */
+                }
+
+                /*pCategoria {
+                    font-size: 14px;
+                    margin: 5px 0;  Espacio entre los párrafos 
+                }*/
+
+                .buy-button-container {
+                    display: flex;
+                    justify-content: flex-end; /* Alinea el botón a la derecha */
+                    margin-top: 10px; /* Agrega margen superior al botón */
+                }
+
+                .btn-comprar {
+                    background-color: #04AA6D;
+                    color: white;
+                    padding: 8px 12px;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+
+                /*h3Categoria {
+                    font-size: 24px;  Cambia el tamaño de la letra del título 
+                    margin-bottom: 5px;
+                }*/
+                .dropdown-container {
+                    position: absolute;
+                    top: 0; /* Posiciona el botón en la parte superior */
+                    right: 0; /* Posiciona el botón en la parte derecha */
+                    margin: 20px;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .btn-dropdown {
+                    background-color: #04AA6D;
+                    color: white;
+                    padding: 8px 12px;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+
+                /* Estilos para el menú desplegable */
+                .dropdown-menu {
+                    display: none;
+                    position: absolute;
+                    top: 100%; /* Posiciona el menú debajo del botón */
+                    right: 0; /* Ajusta el menú a la derecha */
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                    z-index: 1;
+                }
+
+                .dropdown-menu a {
+                    color: black;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                }
+
+                .dropdown-menu a:hover {
+                    background-color: #f1f1f1;
+                }
+
+                /* Muestra el menú desplegable al hacer hover sobre el botón */
+                .dropdown-container:hover .dropdown-menu {
+                    display: block;
+                }
+            </style>
+            <div class="container">
+                <div class="row row-cols-2" >
+                    <h2 class="inline">[[#{index.nuestrosProductos}]]</h2>
+                    <div id="resultsBlock"></div></div>
+                <div class="row row-cols-3" 
+                     th:if="${productos != null and !productos.empty}">
+                    <div class="card" th:each="producto : ${productos}">
+                        <div class="card-body">
+                            <h5 class="card-title">[[${producto.descripcion}]]</h5>
+                            <figure>
+                                <img th:src="@{${producto.rutaImagen}}" height="200"/>
+                                <figcaption>[[${producto.precio}+' ('+${producto.existencias}+')']]
+                                </figcaption>
+                            </figure>
+                            <form>
+                                <input type="hidden" name="texto" th:value="${producto.idProducto}"/>
+                                <input type="hidden" name="texto" th:value="${producto.existencias}"/>
+                                <button class="btn btn-ligth" id="addCard" 
+                                        name="addCard" onclick="agregarCarro(this.form)" 
+                                        type="button"><i class="fas fa-cart-plus">Agregar al carrito</i></button>
+                            </form>
+                            <p class="card-text">[[${producto.detalle}]]</p>                            
                         </div>
                     </div>
                 </div>
                 <div th:if="${productos == null or productos.empty}">
                     [[#{carrito.no_mostrar}]]</div>
-           
-                
-                <!--línea de separación -->
-                <hr class="separator"/>
+            </div>
+        </section>
 
-                <div class="productCategoria">
-                    <img src="https://media.cnn.com/api/v1/images/stellar/prod/230726053047-01-lionel-messi-goals-inter-miami-spt-intl.jpg?c=16x9&q=h_720,w_1280,c_fill" alt="Producto 1" class="product-imageCategoria" />
-                    <div class="product-detailsCategoria">
-                        <h3Categoria>Título del Producto 1</h3Categoria>
-                        <pCategoria>Descripción del Producto 1.</pCategoria>
-                        <pCategoria>Precio: $50</pCategoria>
-                        <div class="buy-button-container">
-                            <button class="btn-comprar">Comprar</button>
-                        </div>
+        <section th:fragment="botonesAgregar" class="product-containerCategoria">
+
+            <style>
+                header {
+                    background: #333;
+                    padding: 30px;
+                    color: #fff;
+                }
+
+                nav {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                }
+
+                .logo {
+                    display: flex;
+                }
+
+                .logo-text1:nth-child(1) {
+                    color: #e5e9ec;
+                    font-size: 35px
+                }
+
+                .logo-text2:nth-child(2) {
+                    color: #f2d027;
+                    font-size: 35px
+                }
+
+                .search-bar {
+                    display: flex;
+                }
+
+                .search-bar input {
+                    height: 35px;
+                }
+
+                .search-bar button {
+                    padding: 5px 10px;
+                }
+
+                .dropdown {
+                    position: relative;
+                }
+
+                .dropbtn {
+                    background: none;
+                    border: none;
+                    color: #fff;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                }
+
+                .dropdown-content a {
+                    color: #333;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                }
+
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+                .signup-login-btn {
+                    background: none;
+                    border: none;
+                    color: #fff;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    margin-right: 10px;
+                }
+                .no-underline {
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                .no-underline:hover {
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+
+                .cart::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f07a";
+                    margin-right: 5px;
+                }
+
+                .search-bar button::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f00e";
+                    margin-right: 5px;
+                }
+
+                .dropdown-content::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f041";
+                    margin-right: 5px;
+                }
+
+                .dropdown-content a[href="#es"]::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f1e9";
+                    margin-right: 5px;
+                }
+
+                .headerL {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .navbar-nav {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                }
+
+                .nav-item {
+                    margin-left: 10px; /* Espacio entre elementos de la barra de navegación */
+                }
+
+                body {
+                    margin: 0;
+                    padding: 0;
+                    background-color: #F2E4BB;
+                    font-family: Arial, sans-serif;
+                }
+
+                .black-section {
+                    background-color: #000;
+                    color: #fff;
+                    padding: 20px;
+                }
+
+                .black-section .column {
+                    width: 25%;
+                    float: left;
+                }
+
+                .gray-section {
+                    background-color: #ccc;
+                    color: #000;
+                    padding: 20px;
+                    text-align: right;
+                }
+
+
+                .containerP {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    width: 25%;
+                    margin-right: 5%;
+                }
+
+
+                .hidden-text {
+                    text-indent: -9999px;
+                }
+
+            </style>
+
+
+            <!--línea de separación -->
+            <hr class="separator"/>
+
+            <div class="productCategoria">
+                <img src="https://media.cnn.com/api/v1/images/stellar/prod/230726053047-01-lionel-messi-goals-inter-miami-spt-intl.jpg?c=16x9&q=h_720,w_1280,c_fill" alt="Producto 1" class="product-imageCategoria" />
+                <div class="product-detailsCategoria">
+                    <h3Categoria>Título del Producto 1</h3Categoria>
+                    <pCategoria>Descripción del Producto 1.</pCategoria>
+                    <pCategoria>Precio: $50</pCategoria>
+                    <div class="buy-button-container">
+                        <button class="btn-comprar">Comprar</button>
                     </div>
                 </div>
-                <!-- Agregar más productos aquí -->
+            </div>
+            <!-- Agregar más productos aquí -->
             </div>
         </section>
     </body>

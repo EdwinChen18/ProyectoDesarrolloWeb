@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org" 
-      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head>
         <title>The Vault</title>
         <meta charset="UTF-8"/>
-        <!--        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>-->
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
         <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
         <link rel="stylesheet" href="styles/styles.css" type="text/css"/>
         <link rel="stylesheet" href="styles/menu.css" type="text/css"/>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="dropdown">
-                    <button class="dropbtn"><i class="fas fa-flag"></i> ES</button>
+                    <button class="dropbtn"><i class="fas fa-flag"></i>[[#{aplicacion.lenguaje}]]</button>
                     <div class="dropdown-content">
                         <ul class="dropdown-menu dropdown-menu-dark">
                             <li class="nav-item px-2"><a class="nav-link" th:href="@{/(lang=es)}">ES</a></li>
@@ -50,7 +50,23 @@
                         </ul>
                     </div>
                 </div>
-                <button class="signup-login-btn"><a th:href="@{/login}" class="no-underline"><i class="fas fa-user"></i> Signup/Login</a></button>
+                <div class="headerL">
+                    <button class="signup-login-btn">
+                        <a th:href="@{/login}" class="no-underline">
+                            <i class="fas fa-user"></i> Signup/Login
+                        </a>
+                    </button>
+                    <ul class="navbar-nav ms-2" sec:authorize="isAuthenticated()">
+                        <li class="nav-item text-white my-auto">
+                            <i class="fas fa-user"></i> <span sec:authentication="name">Bob</span>
+                        </li>
+                        <li class="nav-item my-auto">
+                            <form method="post" th:action="@{/logout}">
+                                <button class="btn btn-dark"><i class="fas fa-sign-out-alt"></i></button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
 
                 <div class="cart"><a th:href="@{/carrito/listado}" class="no-underline"><i class="fas fa-shopping-cart"></i>Carrito</a></div>
             </nav>
@@ -127,10 +143,10 @@
                 <div>
                     <h2>THE VAULT</h2>
                     <p>
-                       [[#{aplicacion.p1}]]
+                        [[#{aplicacion.p1}]]
                     </p>
                     <p>
-                       [[#{aplicacion.p2}]]
+                        [[#{aplicacion.p2}]]
                     </p>
                     <p>
                         En THE VAULT, entendemos la emoción de encontrar ese objeto especial que completará tu colección o hará que tus ojos brillen de admiración. 
@@ -217,7 +233,7 @@
                 <div class="product">
                     <img src="images/CharizardV.jpg" alt="" class="product-image" />
                     <div class="product-details">
-                        <button class="see-more"><a class="no-underline" th:href="@{/producto/listado}">[[#{aplicacion.vermas}]]</a></button>
+                        <button class="see-more"><a class="no-underline" th:href="@{/usuario/listado}">[[#{aplicacion.vermas}]]</a></button>
                     </div>
                 </div>
                 <div class="product">
@@ -243,7 +259,7 @@
                 <p><a class="no-underline" th:href="@{/producto/listado}">[[#{aplicacion.about}]]</a></p>
             </div>
             <div class="column">
-               <p><a class="no-underline" th:href="@{/producto/listado}">[[#{aplicacion.contact}]]</a></p>
+                <p><a class="no-underline" th:href="@{/producto/listado}">[[#{aplicacion.contact}]]</a></p>
                 <p>Instragram</p>
                 <p>Facebook</p>
                 <p>Twitter</p>
@@ -264,5 +280,6 @@
         <footer th:fragment="footer" class=" gray-section">
             <p>&COPY Derechos Reservados 2023</p>
         </footer>
+        <script src="../../static/js/rutinas.js" type="text/javascript"></script>
     </body>
 </html>
