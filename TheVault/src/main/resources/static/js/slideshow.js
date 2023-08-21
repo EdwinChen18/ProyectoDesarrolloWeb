@@ -15,7 +15,7 @@ function showSlides(n) {
   var slides = document.getElementsByClassName("mySlides");
   
   if (slides.length === 0) {
-    return; // No slides found, exit the function
+    return; 
   }
   
   if (n > slides.length) {
@@ -26,10 +26,10 @@ function showSlides(n) {
   }
   
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none"; // Hide all slides
+    slides[i].style.display = "none"; 
   }
   
-  slides[slideIndex - 1].style.display = "block"; // Display the current slide
+  slides[slideIndex - 1].style.display = "block"; 
 }
 
 

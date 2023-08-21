@@ -285,6 +285,140 @@
 
         4 Fragmento que se utiliza en la página modifca.html 
         <section th:fragment="editarUsuario">
+            
+            <style>
+                               header {
+                    background: #333;
+                    padding: 30px;
+                    color: #fff;
+                }
+
+                nav {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                }
+
+                .logo {
+                    display: flex;
+                }
+
+                .logo-text1:nth-child(1) {
+                    color: #e5e9ec;
+                    font-size: 35px
+                }
+
+                .logo-text2:nth-child(2) {
+                    color: #f2d027;
+                    font-size: 35px
+                }
+
+                .search-bar {
+                    display: flex;
+                }
+
+                .search-bar input {
+                    height: 35px;
+                }
+
+                .search-bar button {
+                    padding: 5px 10px;
+                }
+
+                .dropdown {
+                    position: relative;
+                }
+
+                .dropbtn {
+                    background: none;
+                    border: none;
+                    color: #fff;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f9f9f9;
+                    min-width: 160px;
+                    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                    z-index: 1;
+                }
+
+                .dropdown-content a {
+                    color: #333;
+                    padding: 12px 16px;
+                    text-decoration: none;
+                    display: block;
+                }
+
+                .dropdown:hover .dropdown-content {
+                    display: block;
+                }
+
+                .signup-login-btn {
+                    background: none;
+                    border: none;
+                    color: #fff;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                    margin-right: 10px;
+                }
+                .no-underline {
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                .no-underline:hover {
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+
+                .cart::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f07a";
+                    margin-right: 5px;
+                }
+
+                .search-bar button::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f00e";
+                    margin-right: 5px;
+                }
+
+                .dropdown-content::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f041";
+                    margin-right: 5px;
+                }
+
+                .dropdown-content a[href="#es"]::before {
+                    font-family: "Font Awesome 5 Free";
+                    content: "\f1e9";
+                    margin-right: 5px;
+                }
+
+                .headerL {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .navbar-nav {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                }
+
+                .nav-item {
+                    margin-left: 10px; /* Espacio entre elementos de la barra de navegación */
+                } 
+            </style>
+            
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">

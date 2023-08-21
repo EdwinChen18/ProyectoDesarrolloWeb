@@ -65,7 +65,6 @@ public class TheVaultConfig implements WebMvcConfigurer{
         return messageSource;
     }
 
-    /* Los siguiente métodos son para implementar el tema de seguridad dentro del proyecto */
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
