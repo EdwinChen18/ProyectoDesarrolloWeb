@@ -12,20 +12,21 @@
                 <link rel="stylesheet" th:href="styles/productos.css" type="text/css"/>
                 <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
                 <script src="../../static/js/rutinas.js" type="text/javascript"></script>-->
-        <script type="text/javascript">
-            function agregarCarro(formulario) {
-                var valor = formulario.elements[0].value;
-                var url = '/producto/agregar';
-                url = url + '/' + valor;
-                $("#resultsBlock").load(url);
-            }
-        </script>
+        <!--        <script type="text/javascript">
+                    function agregarCarro(formulario) {
+                        var valor = formulario.elements[0].value;
+                        var url = '/producto/agregar';
+                        url = url + '/' + valor;
+                        $("#resultsBlock").load(url);
+                    }
+                </script>-->
     </head>
 
     <body>
         <header th:replace='~{layout/plantilla :: header}'/>
         <section th:fragment="listadoProductos" id="productos">
-            <div class="col-md-3">
+            <div class="container">
+                 <div class="row row-cols-4">
                 <form method="POST" th:action="@{/pruebas/query1}" 
                       class="was-validated">
                     <div class="card">                            
@@ -48,6 +49,7 @@
                                 <i class="fas fa-check"></i> [[#{pruebas.ampliadas}]]
                             </button>
                         </div>
+                    </div>
                     </div>
                 </form>
             </div>   
@@ -169,11 +171,14 @@
                             <form>
                                 <input type="hidden" name="texto" th:value="${producto.idProducto}"/>
                                 <input type="hidden" name="texto" th:value="${producto.existencias}"/>
-                                <button class="btn btn-ligth" id="addCard" 
-                                        name="addCard" onclick="agregarCarro(this.form)" 
+                                <button class="btn btn-ligth buy-button-container btn-comprar" id="addCard" 
+                                        name="addCard" onclick="agregarCarro(this.formulario)" 
                                         type="button"><i class="fas fa-cart-plus">Agregar al carrito</i></button>
                             </form>
-                            <p class="card-text">[[${producto.detalle}]]</p>                            
+                            <h5 class="card-title"></h5>
+                            <p>Estado: Nueva</p>
+                            <p>Idioma: Ingles</p>  
+
                         </div>
                     </div>
                 </div>
@@ -375,6 +380,31 @@
             </div>
             <!-- Agregar más productos aquí -->
             </div>
+        </section>
+                <section th:fragment="Reporte">
+            <div class="container">
+                <div class="row row-cols-4">
+                                <div class="card">
+                    <div class="card-header text-center">
+                        Reporte productos
+                    </div>
+                    <div class="card-body">
+                        <a th:href="@{/reportes/productos?tipo=vPdf}" class="btn btn-primary">
+                            <i class='fas fa-eye'></i><i class='fas fa-file-pdf'></i>
+                        </a>
+                        <a th:href="@{/reportes/productos?tipo=Pdf}" class="btn btn-success">
+                            <i class='fas fa-download'></i><i class='fas fa-file-pdf'></i>
+                        </a>
+                        <a th:href="@{/reportes/productos?tipo=Xls}" class="btn btn-warning">
+                            <i class='fas fa-download'></i><i class='fas fa-file-excel'></i>
+                        </a>
+                        <a th:href="@{/reportes/productos?tipo=Csv}" class="btn btn-danger">
+                            <i class='fas fa-download'></i><i class='fas fa-file-csv'></i>
+                        </a>
+                    </div>
+                </div> 
+                </div>
+            </div>  
         </section>
     </body>
 </html>

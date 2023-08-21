@@ -104,6 +104,11 @@
             <version>5.10.0</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.20.5</version>
+        </dependency>
     </dependencies>
 
     <build>

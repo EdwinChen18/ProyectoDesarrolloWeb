@@ -7,7 +7,16 @@
     </head>
     <body>
         <section th:fragment="listadoProductos" id="productos">
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!--<script> 
+    
+function agregarCarro(formulario) {
+    var valor = formulario.elements[0].value;
+    var url = '/producto/agregar';
+    url = url + '/' + valor;
+    $("#resultsBlock").load(url);
+}
+</script>-->
             <div class="container">
                 <div class="row row-cols-2" >
                     <h2 class="inline">[[#{index.nuestrosProductos}]]</h2>

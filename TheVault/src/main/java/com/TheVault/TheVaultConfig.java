@@ -82,7 +82,7 @@ public class TheVaultConfig implements WebMvcConfigurer{
                 .requestMatchers("/", "/index", "/errores/**",
                         "/carrito/**", "/reportes/**",
                         "/registro/**", "/webjars/**","/js/**","/styles/**","/images/**",
-                        "/producto/**","/categoria/**","/css/**")
+                        "/producto/**","/categoria/**","/css/**", "/jasper/**")
                 .permitAll()
                 .requestMatchers(
                         "/producto/nuevo", "/producto/guardar",
@@ -91,13 +91,13 @@ public class TheVaultConfig implements WebMvcConfigurer{
                         "/categoria/modificar/**", "/categoria/eliminar/**",
                         "/usuario/nuevo", "/usuario/guardar",
                         "/usuario/modificar/**", "/usuario/eliminar/**",
-                        "/reportes/**", "/js/**", "/producto/listado"
+                        "/reportes/**", "/js/**", "/producto/listado", "/jasper/**"
                         
                 ).hasRole("ADMIN")
                 .requestMatchers(
                         "/producto/listado",
                         "/categoria/listado",
-                        "/usuario/listado"
+                        "/usuario/listado", "/reportes/**", "/jasper/**"
                 ).hasAnyRole("ADMIN", "VENDEDOR")
                 .requestMatchers("/facturar/carrito")
                         
